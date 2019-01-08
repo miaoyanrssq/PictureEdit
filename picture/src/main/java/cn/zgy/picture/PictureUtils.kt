@@ -1,5 +1,7 @@
 package cn.zgy.picture
 
+import android.graphics.Bitmap
+
 class PictureUtils {
 
     companion object {
@@ -10,5 +12,18 @@ class PictureUtils {
 
     external fun stringFromJNI() : String
 
-    external fun NdkMb(buffer : IntArray, width : Int, height : Int) : IntArray
+    /**
+     * 美白
+     */
+    external fun ndkMb(bitmap : Bitmap, britness : Float, constrait : Float)
+
+    /**
+     * 灰度
+     */
+    external fun grayScale(bitmap : Bitmap)
+
+    /**
+     * 高斯模糊
+     */
+    external fun gaussBlur(bitmap: Bitmap)
 }
