@@ -112,12 +112,6 @@ Java_cn_zgy_picture_PictureUtils_grayScale(
     AndroidBitmap_unlockPixels(env, bitmap);
 
 }
-///**
-// *高斯模糊算法
-// */
-//void gaussBlur1(int* pix, int w, int h, int radius){
-//
-//}
 
 /**
  * 高斯模糊
@@ -133,6 +127,3 @@ Java_cn_zgy_picture_PictureUtils_gaussBlur(
     gaussBlur1(buf, info.width, info.height, 50);
     AndroidBitmap_unlockPixels(env, bitmap);
 }
-
-#include "compress.h"
-

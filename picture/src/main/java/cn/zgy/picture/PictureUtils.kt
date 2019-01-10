@@ -7,6 +7,7 @@ class PictureUtils {
     companion object {
         init {
             System.loadLibrary("picture-edit")
+            System.loadLibrary("compress")
         }
     }
 

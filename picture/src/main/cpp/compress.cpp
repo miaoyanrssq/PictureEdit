@@ -1,5 +1,5 @@
 //
-// Created by 高阳· 甄 on 2019/1/9.
+// Created by 高阳· 甄 on 2019/1/10.图片压缩算法
 //
 #include <string.h>
 #include <android/bitmap.h>
@@ -34,6 +34,8 @@ extern "C" {
 #define false 0
 
 typedef uint8_t BYTE;
+
+typedef uint8_t BYTE;
 char *error;
 struct my_error_mgr {
     struct jpeg_error_mgr pub;
@@ -45,11 +47,11 @@ typedef struct my_error_mgr *my_error_ptr;
 
 METHODDEF(void)
 my_error_exit(j_common_ptr cinfo) {
-    my_error_ptr myerr = (my_error_ptr) cinfo->err;
-    (*cinfo->err->output_message)(cinfo);
-    error = const_cast<char *>(myerr->pub.jpeg_message_table[myerr->pub.msg_code]);
-    LOGE("jpeg_message_table[%d]:%s", myerr->pub.msg_code, myerr->pub.jpeg_message_table[myerr->pub.msg_code]);
-    longjmp(myerr->setjmp_buffer, 1);
+my_error_ptr myerr = (my_error_ptr) cinfo->err;
+(*cinfo->err->output_message)(cinfo);
+error = const_cast<char *>(myerr->pub.jpeg_message_table[myerr->pub.msg_code]);
+LOGE("jpeg_message_table[%d]:%s", myerr->pub.msg_code, myerr->pub.jpeg_message_table[myerr->pub.msg_code]);
+longjmp(myerr->setjmp_buffer, 1);
 }
 
 int generateJPEG(BYTE *data, int w, int h, int quality, const char *outfilename, jboolean optimize) {
@@ -134,6 +136,8 @@ void jstringTostring(JNIEnv *env, jstring jstr, char *output, int *de_len) {
     env->ReleaseByteArrayElements(barr, ba, 0);
 }
 
+
+
 /**
  * 图片压缩
  */
@@ -188,4 +192,5 @@ Java_cn_zgy_picture_PictureUtils_compressBitmap(
 
     return env->NewStringUTF("1");
 }
+
 
