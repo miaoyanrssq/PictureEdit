@@ -6,7 +6,6 @@ class PictureUtils {
 
     companion object {
         init {
-            System.loadLibrary("gauss")
             System.loadLibrary("picture-edit")
             System.loadLibrary("compress")
         }
@@ -29,8 +28,5 @@ class PictureUtils {
      */
     external fun gaussBlur(bitmap: Bitmap)
 
-    /**
-     * 压缩
-     */
-    external fun compressBitmap(bitmap: Bitmap, quality: Int, filenameBytes: ByteArray, optimize: Boolean) : String
+
 }

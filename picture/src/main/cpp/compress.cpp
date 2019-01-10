@@ -142,7 +142,7 @@ void jstringTostring(JNIEnv *env, jstring jstr, char *output, int *de_len) {
  * 图片压缩
  */
 extern "C" JNIEXPORT jstring JNICALL
-Java_cn_zgy_picture_PictureUtils_compressBitmap(
+Java_cn_zgy_picture_Compress_compressBitmap(
         JNIEnv *env, jobject, jobject bitmap, jint quality, jbyteArray fileNameBytes, jboolean optimize) {
 
     AndroidBitmapInfo info;

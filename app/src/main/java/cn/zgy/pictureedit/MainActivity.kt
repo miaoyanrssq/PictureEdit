@@ -8,11 +8,14 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.support.v4.app.ActivityCompat
+import cn.zgy.picture.Compress
+import cn.zgy.picture.PictureEdit
 import cn.zgy.picture.PictureUtils
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), PictureEdit.OnCompressListener {
+
 
     /** SD卡根目录  */
     private val externalStorageDirectory = Environment.getExternalStorageDirectory().path + "/Picture"+ "/"
@@ -40,6 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         grey.setOnClickListener {
             greyScale(bitmap)
+//            PictureEdit.create().compress()
         }
 
         gauss.setOnClickListener {
@@ -68,7 +72,14 @@ class MainActivity : AppCompatActivity() {
                 ), 100
             )
         } else {
-            compress(bitmap, externalStorageDirectory + System.currentTimeMillis()/1000 + ".jpg")
+//            compress(bitmap, externalStorageDirectory + System.currentTimeMillis()/1000 + ".jpg")
+            PictureEdit.create()
+                .bitmap(bitmap)
+                .outputFile(externalStorageDirectory + System.currentTimeMillis()/1000 + ".jpg")
+                .quality(30)
+                .optimize(true)
+                .listener(this)
+                .compress()
         }
     }
 
@@ -80,7 +91,14 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == 100) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                compress(bitmap, externalStorageDirectory + System.currentTimeMillis()/1000 + ".jpg")
+//                compress(bitmap, externalStorageDirectory + System.currentTimeMillis()/1000 + ".jpg")
+                PictureEdit.create()
+                    .bitmap(bitmap)
+                    .outputFile(externalStorageDirectory + System.currentTimeMillis()/1000 + ".jpg")
+                    .quality(30)
+                    .optimize(true)
+                    .listener(this)
+                    .compress()
             }
         }
     }
@@ -103,9 +121,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun compress(bitmap: Bitmap, outputFileName: String){
-        var result = PictureUtils().compressBitmap(bitmap,20, outputFileName.toByteArray(), true)
+        var result = Compress().compressBitmap(bitmap,20, outputFileName.toByteArray(), true)
         if("1".equals(result)){
             image2.setImageBitmap(BitmapFactory.decodeFile(outputFileName))
         }
+    }
+
+
+    override fun start() {
+    }
+
+    override fun onSuccess(filePath: String) {
+        image2.setImageBitmap(BitmapFactory.decodeFile(filePath))
+    }
+
+    override fun onError(e: String) {
     }
 }
