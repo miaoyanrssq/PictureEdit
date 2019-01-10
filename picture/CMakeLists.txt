@@ -14,6 +14,14 @@ add_library(libjpeg SHARED IMPORTED)
 set_target_properties(libjpeg PROPERTIES IMPORTED_LOCATION ${libjpeg_lib_dir}/${ANDROID_ABI}/libjpeg.so)
 
 add_library( # Sets the name of the library.
+        gauss
+
+        # Sets the library as a shared library.
+        SHARED
+
+        # Provides a relative path to your source file(s).
+        src/main/cpp/gauss.cpp)
+add_library( # Sets the name of the library.
         picture-edit
 
         # Sets the library as a shared library.
@@ -29,6 +37,10 @@ add_library( # Sets the name of the library.
 
         # Provides a relative path to your source file(s).
         src/main/cpp/compress.cpp)
+
+
+
+
 find_library( # Sets the name of the path variable.
         log-lib
 
@@ -37,6 +49,7 @@ find_library( # Sets the name of the path variable.
         log)
 #自己写的库，若与其他库连接，请分开书写，如下，picture-edit和compress分别与其他库连接，如果写在一起，则不起作用
 target_link_libraries(picture-edit
+                        gauss
                         libjpeg
                         jnigraphics
                         ${log-lib}

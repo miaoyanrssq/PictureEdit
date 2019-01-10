@@ -49,7 +49,9 @@ class MainActivity : AppCompatActivity() {
         compress.setOnClickListener {
 //            compress(bitmap, externalStorageDirectory + System.currentTimeMillis()/1000 + ".jpg")
             var file = File(externalStorageDirectory)
-            file.mkdirs()
+            if(!file.exists()) {
+                file.mkdirs()
+            }
             checkPermission()
         }
     }

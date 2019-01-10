@@ -6,9 +6,7 @@
 #include <string>
 #include <stdlib.h>
 #include <android/bitmap.h>
-
 #include "gauss.h"
-
 
 extern "C" JNIEXPORT jstring JNICALL
 Java_cn_zgy_picture_PictureUtils_stringFromJNI(

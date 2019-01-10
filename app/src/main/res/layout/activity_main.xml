@@ -73,6 +73,8 @@
             android:text="压缩"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/grey"
+            app:layout_constraintBottom_toTopOf="@id/gauss"
+
     />
 
 </android.support.constraint.ConstraintLayout>
