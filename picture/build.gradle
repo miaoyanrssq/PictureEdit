@@ -17,14 +17,26 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags ""
+                arguments '-DANDROID_PLATFORM=android-23',
+                        '-DANDROID_TOOLCHAIN=clang', '-DANDROID_STL=gnustl_static'
             }
         }
+
+        ndk {
+            abiFilters "armeabi-v7a", "armeabi"
+        }
+
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
         }
     }
 

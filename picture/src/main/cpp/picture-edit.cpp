@@ -29,7 +29,7 @@ Java_cn_zgy_picture_PictureUtils_ndkMb
     AndroidBitmapInfo info = {0};
     AndroidBitmap_getInfo(env, bitmap, &info);
     int *buf = NULL;
-    AndroidBitmap_lockPixels(env, bitmap, (void **)&buf);
+    AndroidBitmap_lockPixels(env, bitmap, (void **) &buf);
 
     int width = info.width;
     int height = info.height;
@@ -77,6 +77,7 @@ Java_cn_zgy_picture_PictureUtils_ndkMb
     }
     AndroidBitmap_unlockPixels(env, bitmap);
 }
+
 /**
  * 灰度
  */
@@ -87,7 +88,7 @@ Java_cn_zgy_picture_PictureUtils_grayScale(
     AndroidBitmapInfo info = {0};
     AndroidBitmap_getInfo(env, bitmap, &info);
     int *buf = NULL;
-    AndroidBitmap_lockPixels(env, bitmap, (void **)&buf);
+    AndroidBitmap_lockPixels(env, bitmap, (void **) &buf);
 
     int w = info.width;
     int h = info.height;
@@ -96,8 +97,8 @@ Java_cn_zgy_picture_PictureUtils_grayScale(
     int i, j;
     int color;
     int red, green, blue;
-    for(i = 0 ; i< h ; i++){
-        for(j = 0 ; j < w ; j++){
+    for (i = 0; i < h; i++) {
+        for (j = 0; j < w; j++) {
             color = srcPixs[w * i + j];
             red = (color >> 16) & 0xFF;
             green = (color >> 8) & 0xFF;
@@ -123,16 +124,15 @@ Java_cn_zgy_picture_PictureUtils_grayScale(
  */
 extern "C" JNIEXPORT void JNICALL
 Java_cn_zgy_picture_PictureUtils_gaussBlur(
-        JNIEnv *env, jobject, jobject bitmap){
+        JNIEnv *env, jobject, jobject bitmap) {
 
     AndroidBitmapInfo info = {0};
     AndroidBitmap_getInfo(env, bitmap, &info);
     int *buf = NULL;
-    AndroidBitmap_lockPixels(env, bitmap, (void **)&buf);
+    AndroidBitmap_lockPixels(env, bitmap, (void **) &buf);
     gaussBlur1(buf, info.width, info.height, 50);
     AndroidBitmap_unlockPixels(env, bitmap);
 }
 
-
-
+#include "compress.h"
 

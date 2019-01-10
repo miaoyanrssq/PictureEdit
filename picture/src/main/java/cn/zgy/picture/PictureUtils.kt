@@ -26,4 +26,9 @@ class PictureUtils {
      * 高斯模糊
      */
     external fun gaussBlur(bitmap: Bitmap)
+
+    /**
+     * 压缩
+     */
+    external fun compressBitmap(bitmap: Bitmap, quality: Int, filenameBytes: ByteArray, optimize: Boolean) : String
 }
