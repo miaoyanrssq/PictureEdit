@@ -4,13 +4,11 @@ import android.graphics.*
 import android.media.ExifInterface
 import java.io.*
 
-class Compress {
+object Compress {
 
-    companion object {
         init {
             System.loadLibrary("compress")
         }
-    }
 
     /**
      * 压缩，native方法

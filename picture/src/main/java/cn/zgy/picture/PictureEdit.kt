@@ -29,6 +29,7 @@ class PictureEdit : Handler.Callback{
         }
     }
 
+
     /**
      * 待压缩bitmap，如果设置此值，则inputFile(curFile: String)设置无效
      */
@@ -95,12 +96,12 @@ class PictureEdit : Handler.Callback{
             var result: String
             if(bitmap != null) {
                 if (maxSize == 0) {
-                    result = Compress().compressBitmap(bitmap!!, quality, outputFilename.toByteArray(), optimize)
+                    result = Compress.compressBitmap(bitmap!!, quality, outputFilename.toByteArray(), optimize)
                 } else {
-                    result = Compress().compressBitmap(bitmap!!, outputFilename, maxSize, quality)
+                    result = Compress.compressBitmap(bitmap!!, outputFilename, maxSize, quality)
                 }
             }else{
-                result = Compress().compressBitmap(curFile!!, outputFilename, maxSize, quality)
+                result = Compress.compressBitmap(curFile!!, outputFilename, maxSize, quality)
             }
             if ("1".equals(result)){
                 mHandler.sendMessage(mHandler.obtainMessage(MSG_COMPRESS_SUCCESS, outputFilename))
@@ -126,5 +127,26 @@ class PictureEdit : Handler.Callback{
         fun start()
         fun onSuccess(filePath: String)
         fun onError(e: String)
+    }
+
+    /**
+     * 美白
+     */
+    fun ndkMb(bitmap : Bitmap, brightness : Float, constraint : Float){
+        PictureUtils.ndkMb(bitmap, brightness, constraint)
+    }
+
+    /**
+     * 灰度
+     */
+    fun grayScale(bitmap : Bitmap){
+        PictureUtils.grayScale(bitmap)
+    }
+
+    /**
+     * 高斯模糊
+     */
+    fun gaussBlur(bitmap: Bitmap): Int{
+        return PictureUtils.gaussBlur(bitmap)
     }
 }

@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(), PictureEdit.OnCompressListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        hello.text = PictureUtils().stringFromJNI()
+        hello.text = PictureUtils.stringFromJNI()
         initView()
     }
 
@@ -107,23 +107,23 @@ class MainActivity : AppCompatActivity(), PictureEdit.OnCompressListener {
 
 
     fun ndkMB(bitmap: Bitmap){
-        PictureUtils().ndkMb(bitmap, 0.2f, 0.2f)
+        PictureEdit.create().ndkMb(bitmap, 0.2f, 0.2f)
         image.setImageBitmap(bitmap)
 
     }
 
     fun greyScale(bitmap: Bitmap){
-        PictureUtils().grayScale(bitmap)
+        PictureEdit.create().grayScale(bitmap)
         image.setImageBitmap(bitmap)
     }
 
     fun gaussBlur(bitmap: Bitmap){
-        PictureUtils().gaussBlur(bitmap)
+        PictureEdit.create().gaussBlur(bitmap)
         image.setImageBitmap(bitmap)
     }
 
     fun compress(bitmap: Bitmap, outputFileName: String){
-        var result = Compress().compressBitmap(bitmap,20, outputFileName.toByteArray(), true)
+        var result = Compress.compressBitmap(bitmap,20, outputFileName.toByteArray(), true)
         if("1".equals(result)){
             image2.setImageBitmap(BitmapFactory.decodeFile(outputFileName))
         }

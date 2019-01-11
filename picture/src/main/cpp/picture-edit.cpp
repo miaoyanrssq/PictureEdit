@@ -22,7 +22,7 @@ Java_cn_zgy_picture_PictureUtils_stringFromJNI(
  */
 extern "C" JNIEXPORT void JNICALL
 Java_cn_zgy_picture_PictureUtils_ndkMb
-        (JNIEnv *env, jobject, jobject bitmap, jfloat brightness, jfloat constrait) {
+        (JNIEnv *env, jobject, jobject bitmap, jfloat brightness, jfloat constraint) {
 
     AndroidBitmapInfo info = {0};
     AndroidBitmap_getInfo(env, bitmap, &info);
@@ -35,7 +35,7 @@ Java_cn_zgy_picture_PictureUtils_ndkMb
     int color;
     int a, r, g, b;
     int bri = (int) (brightness * 255);
-    float cos = 1.f + constrait;
+    float cos = 1.f + constraint;
 
     for (int x = 0; x < height; x++) {
         for (int y = 0; y < width; y++) {
@@ -114,7 +114,7 @@ Java_cn_zgy_picture_PictureUtils_grayScale(
 /**
  * 高斯模糊
  */
-extern "C" JNIEXPORT void JNICALL
+extern "C" JNIEXPORT jint JNICALL
 Java_cn_zgy_picture_PictureUtils_gaussBlur(
         JNIEnv *env, jobject, jobject bitmap) {
 
@@ -124,4 +124,5 @@ Java_cn_zgy_picture_PictureUtils_gaussBlur(
     AndroidBitmap_lockPixels(env, bitmap, (void **) &buf);
     gaussBlur1(buf, info.width, info.height, 50);
     AndroidBitmap_unlockPixels(env, bitmap);
+    return 1;
 }

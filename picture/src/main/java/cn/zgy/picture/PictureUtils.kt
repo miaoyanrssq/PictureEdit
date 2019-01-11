@@ -2,21 +2,18 @@ package cn.zgy.picture
 
 import android.graphics.Bitmap
 
-class PictureUtils {
+object PictureUtils {
 
-    companion object {
         init {
             System.loadLibrary("picture-edit")
-            System.loadLibrary("compress")
         }
-    }
 
     external fun stringFromJNI() : String
 
     /**
      * 美白
      */
-    external fun ndkMb(bitmap : Bitmap, britness : Float, constrait : Float)
+    external fun ndkMb(bitmap : Bitmap, brightness : Float, constraint : Float)
 
     /**
      * 灰度
@@ -24,9 +21,9 @@ class PictureUtils {
     external fun grayScale(bitmap : Bitmap)
 
     /**
-     * 高斯模糊
+     * 高斯模糊 1:成功
      */
-    external fun gaussBlur(bitmap: Bitmap)
+    external fun gaussBlur(bitmap: Bitmap) : Int
 
 
 }
