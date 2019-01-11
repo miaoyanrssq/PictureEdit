@@ -72,13 +72,14 @@ class MainActivity : AppCompatActivity(), PictureEdit.OnCompressListener {
                 ), 100
             )
         } else {
-//            compress(bitmap, externalStorageDirectory + System.currentTimeMillis()/1000 + ".jpg")
             PictureEdit.create()
                 .bitmap(bitmap)
+                .inputFile(externalStorageDirectory + 1547174972 + ".jpg")
                 .outputFile(externalStorageDirectory + System.currentTimeMillis()/1000 + ".jpg")
                 .quality(30)
                 .optimize(true)
                 .listener(this)
+                .ignoreSize(100)
                 .compress()
         }
     }
@@ -98,6 +99,7 @@ class MainActivity : AppCompatActivity(), PictureEdit.OnCompressListener {
                     .quality(30)
                     .optimize(true)
                     .listener(this)
+                    .ignoreSize(400)
                     .compress()
             }
         }
