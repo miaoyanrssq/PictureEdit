@@ -6,13 +6,13 @@ jni图片处理，采用哈夫曼算法，按照苹果图片压缩的方式，�
 java版
 
 ```groovy
-implementation 'cn.zgy.picture:pictureEdit:0.0.3'
+implementation 'cn.zgy.picture:pictureEdit:0.0.4'
 ```
 
 kotlin版
 
 ```groovy
-implementation 'cn.zgy.picture:pictureEdit-kotlin:0.0.3'
+implementation 'cn.zgy.picture:pictureEdit-kotlin:0.0.4'
 ```
 
 
