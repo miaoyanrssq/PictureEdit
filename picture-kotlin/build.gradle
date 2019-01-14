@@ -52,7 +52,7 @@ publish {
     userOrg = 'miaoyanrssq' // bintray 上注册的用户名
     groupId = 'cn.zgy.picture' // 包名
     artifactId = 'pictureEdit-kotlin' // library名
-    publishVersion = '0.0.3' // 版本号
+    publishVersion = '0.0.4' // 版本号
     desc = 'pictureEdit For Android Kotlin'
     website = 'https://github.com/miaoyanrssq/PictureEdit'
 }

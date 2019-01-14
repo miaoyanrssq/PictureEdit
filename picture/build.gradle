@@ -51,7 +51,7 @@ publish {
     userOrg = 'miaoyanrssq' // bintray 上注册的用户名
     groupId = 'cn.zgy.picture' // 包名
     artifactId = 'pictureEdit' // library名
-    publishVersion = '0.0.3' // 版本号
+    publishVersion = '0.0.4' // 版本号
     desc = 'pictureEdit For Android'
     website = 'https://github.com/miaoyanrssq/PictureEdit'
 }
@@ -63,4 +63,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'androidx.exifinterface:exifinterface:1.0.0'
 }

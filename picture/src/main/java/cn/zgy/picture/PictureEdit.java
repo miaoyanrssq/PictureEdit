@@ -85,9 +85,9 @@ public class PictureEdit implements Handler.Callback {
             return;
         }
         mHandler.sendMessage(mHandler.obtainMessage(MSG_COMPRESS_START));
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
                 String result;
                 if(bitmap != null) {
                     if (maxSize == 0) {
@@ -103,8 +103,8 @@ public class PictureEdit implements Handler.Callback {
                 }else{
                     mHandler.sendMessage(mHandler.obtainMessage(MSG_COMPRESS_ERROR, new RuntimeException("压缩失败")));
                 }
-//            }
-//        }).start();
+            }
+        }).start();
     }
 
     @Override
