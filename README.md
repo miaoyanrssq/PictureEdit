@@ -1,10 +1,21 @@
 # PictureEdit
-jni图片处理
+jni图片处理，采用哈夫曼算法，按照苹果图片压缩的方式，保证清晰度的前提下压缩图片
 
 #使用
+
+java版
+
 ```groovy
-implementation 'cn.zgy.picture:pictureEdit:0.0.1'
+implementation 'cn.zgy.picture:pictureEdit:0.0.3'
 ```
+
+kotlin版
+
+```groovy
+implementation 'cn.zgy.picture:pictureEdit-kotlin:0.0.3'
+```
+
+
 
 ## 最新版本
 
@@ -14,7 +25,7 @@ implementation 'cn.zgy.picture:pictureEdit:0.0.1'
 ```java
 PictureEdit.create()
                 .bitmap(bitmap)
-                .outputFile(externalStorageDirectory + System.currentTimeMillis()/1000 + ".jpg")
+                .outputFile(outputFile)
                 .quality(30)
                 .optimize(true)
                 .listener(this)

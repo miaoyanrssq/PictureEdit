@@ -1,7 +1,10 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion 27
+
 
 
     defaultConfig {
@@ -23,7 +26,6 @@ android {
             abiFilters "armeabi-v7a", "armeabi"
         }
 
-
     }
 
     buildTypes {
@@ -32,7 +34,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
@@ -50,9 +51,9 @@ android {
 publish {
     userOrg = 'miaoyanrssq' // bintray 上注册的用户名
     groupId = 'cn.zgy.picture' // 包名
-    artifactId = 'pictureEdit' // library名
+    artifactId = 'pictureEdit-kotlin' // library名
     publishVersion = '0.0.3' // 版本号
-    desc = 'pictureEdit For Android'
+    desc = 'pictureEdit For Android Kotlin'
     website = 'https://github.com/miaoyanrssq/PictureEdit'
 }
 
@@ -63,4 +64,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

@@ -10,11 +10,12 @@ import android.os.Environment
 import android.support.v4.app.ActivityCompat
 import cn.zgy.picture.Compress
 import cn.zgy.picture.PictureEdit
+import cn.zgy.picture.PictureEdit.OnCompressListener
 import cn.zgy.picture.PictureUtils
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 
-class MainActivity : AppCompatActivity(), PictureEdit.OnCompressListener {
+class MainActivity : AppCompatActivity(), OnCompressListener {
 
 
     /** SD卡根目录  */

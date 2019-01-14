@@ -10,7 +10,7 @@
 
 extern "C" JNIEXPORT jstring JNICALL
 Java_cn_zgy_picture_PictureUtils_stringFromJNI(
-        JNIEnv *env, jclass type
+        JNIEnv *env, jobject
 ) {
     std::string hello = "Hello from c++";
     return env->NewStringUTF(hello.c_str());
@@ -22,7 +22,7 @@ Java_cn_zgy_picture_PictureUtils_stringFromJNI(
  */
 extern "C" JNIEXPORT void JNICALL
 Java_cn_zgy_picture_PictureUtils_ndkMb
-        (JNIEnv *env, jclass type, jobject bitmap, jfloat brightness, jfloat constraint) {
+        (JNIEnv *env, jobject, jobject bitmap, jfloat brightness, jfloat constraint) {
 
     AndroidBitmapInfo info = {0};
     AndroidBitmap_getInfo(env, bitmap, &info);
@@ -81,7 +81,7 @@ Java_cn_zgy_picture_PictureUtils_ndkMb
  */
 extern "C" JNIEXPORT void JNICALL
 Java_cn_zgy_picture_PictureUtils_grayScale(
-        JNIEnv *env, jclass type, jobject bitmap) {
+        JNIEnv *env, jobject, jobject bitmap) {
 
     AndroidBitmapInfo info = {0};
     AndroidBitmap_getInfo(env, bitmap, &info);
@@ -116,7 +116,7 @@ Java_cn_zgy_picture_PictureUtils_grayScale(
  */
 extern "C" JNIEXPORT jint JNICALL
 Java_cn_zgy_picture_PictureUtils_gaussBlur(
-        JNIEnv *env, jclass type, jobject bitmap) {
+        JNIEnv *env, jobject, jobject bitmap) {
 
     AndroidBitmapInfo info = {0};
     AndroidBitmap_getInfo(env, bitmap, &info);
@@ -126,4 +126,3 @@ Java_cn_zgy_picture_PictureUtils_gaussBlur(
     AndroidBitmap_unlockPixels(env, bitmap);
     return 1;
 }
-

@@ -92,7 +92,7 @@ class PictureEdit : Handler.Callback{
             return
         }
         mHandler.sendMessage(mHandler.obtainMessage(MSG_COMPRESS_START))
-//        Thread(Runnable {
+        Thread(Runnable {
             var result: String
             if(bitmap != null) {
                 if (maxSize == 0) {
@@ -108,7 +108,7 @@ class PictureEdit : Handler.Callback{
             }else{
                 mHandler.sendMessage(mHandler.obtainMessage(MSG_COMPRESS_ERROR, RuntimeException("压缩失败")))
             }
-//        }).start()
+        }).start()
 
     }
 
